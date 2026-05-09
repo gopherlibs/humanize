@@ -209,7 +209,7 @@ func TestParseVeryBig(t *testing.T) {
 
 func BenchmarkParseBigBytes(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		ParseBigBytes("16.5 Z")
+		_, _ = ParseBigBytes("16.5 Z")
 	}
 }
 

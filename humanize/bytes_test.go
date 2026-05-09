@@ -140,7 +140,7 @@ func TestBytes(t *testing.T) {
 
 func BenchmarkParseBytes(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		ParseBytes("16.5 GB")
+		_, _ = ParseBytes("16.5 GB")
 	}
 }
 
