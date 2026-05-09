@@ -123,14 +123,14 @@ func TestSIWithDigits(t *testing.T) {
 
 func BenchmarkParseSI(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		ParseSI("2.2346ZB")
+		_, _, _ = ParseSI("2.2346ZB")
 	}
 }
 
 // There was a report that zeroes were being truncated incorrectly
 func TestBug106(t *testing.T) {
-	tests := []struct{
-		in float64
+	tests := []struct {
+		in   float64
 		want string
 	}{
 		{20.0, "20 U"},
@@ -138,8 +138,8 @@ func TestBug106(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if got :=SIWithDigits(test.in, 0, "U") ;  got != test.want {
-			t.Errorf("on %f got %v, want %v", test.in, got, test.want);
+		if got := SIWithDigits(test.in, 0, "U"); got != test.want {
+			t.Errorf("on %f got %v, want %v", test.in, got, test.want)
 		}
 	}
 }
