@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	humanize "github.com/gopherlibs/humanize"
+	humanize "github.com/gopherlibs/humanize/humanize"
 )
 
 // These are included because they are common technical terms.
