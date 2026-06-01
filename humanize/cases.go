@@ -5,8 +5,9 @@ import (
 	"unicode"
 )
 
-/* TestTokenize breaks out strings into a string slice. It removes special
- * characters, spaces, and gives you just the string slice.
+/* tokenize converts a string into a slice of strings. It
+ * removes special characters, spaces, and gives you just the
+ * string slice.
  */
 func tokenize(input string) []string {
 
@@ -41,7 +42,32 @@ func tokenize(input string) []string {
 	return output
 }
 
+/* KebabCase converts a string into KebabCase.
+ *
+ * For example, "`Happy birthday`` into `happy-birthday`."
+ */
+func KebabCase(input string) string {
+
+	tokens := tokenize(input)
+
+	var sb strings.Builder // building out each word
+
+	// loop through tokens
+	for i, t := range tokens {
+
+		if i > 0 {
+			sb.WriteString("-")
+		}
+
+		sb.WriteString(t)
+	}
+
+	return sb.String()
+}
+
 /* PascalCase converts a string into PascalCase.
+ *
+ * For example, "`Happy birthday`` into `HappyBirthday`."
  */
 func PascalCase(input string) string {
 
