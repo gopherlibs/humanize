@@ -42,7 +42,34 @@ func tokenize(input string) []string {
 	return output
 }
 
-/* KebabCase converts a string into KebabCase.
+/* CamelCase converts a string into camelCase.
+ *
+ * For example, "`Happy birthday`` into `happyBirthday`."
+ */
+func CamelCase(input string) string {
+
+	tokens := tokenize(input)
+
+	var sb strings.Builder // building out each word
+
+	// loop through tokens
+	for i, t := range tokens {
+
+		if i == 0 {
+			sb.WriteString(t)
+		} else {
+
+			// capitalize first letter of word
+			sb.WriteString(strings.ToUpper(string(t[0])))
+			// apply the rest of the letters
+			sb.WriteString(t[1:])
+		}
+	}
+
+	return sb.String()
+}
+
+/* KebabCase converts a string into kebab-case.
  *
  * For example, "`Happy birthday`` into `happy-birthday`."
  */

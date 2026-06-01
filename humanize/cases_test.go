@@ -51,6 +51,52 @@ func TestTokenize(t *testing.T) {
 	}
 }
 
+/* TestCamelCase tests the CamelCase function.
+ */
+func TestCamelCase(t *testing.T) {
+
+	var testCases = []struct {
+		name   string
+		input  string
+		output string
+	}{
+		{
+			"empty input",
+			"",
+			"",
+		},
+		{
+			"test a single word",
+			"happy",
+			"happy",
+		},
+		{
+			"test two words",
+			"happy birthday",
+			"happyBirthday",
+		},
+		{
+			"a list of fruit",
+			"apple banana cherry",
+			"appleBananaCherry",
+		},
+		{
+			"A normal sentence",
+			"This is a normal sentence.",
+			"thisIsANormalSentence",
+		},
+	}
+
+	// run each test case
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			if result := CamelCase(tc.input); result != tc.output {
+				t.Errorf("expected: %s, got: %s", tc.output, result)
+			}
+		})
+	}
+}
+
 /* TestKebabCase tests the KebabCase function.
  */
 func TestKebabCase(t *testing.T) {
