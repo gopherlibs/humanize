@@ -113,3 +113,13 @@ func PascalCase(input string) string {
 
 	return sb.String()
 }
+
+/* Slug converts a string into a 'slug'. A lowercased string
+ * without special characters and dashes instead of spaces. This
+ * is typical for CLI use, databases, URLs, etc.
+ *
+ * This function is an alias for KebabCase.
+ *
+ * For example, "`Happy birthday`` into `happy-birthday`."
+ */
+func Slug(input string) string { return KebabCase(input) }
