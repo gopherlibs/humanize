@@ -188,3 +188,50 @@ func TestPascalCase(t *testing.T) {
 		})
 	}
 }
+
+/* TestSlug tests the Slug function. As the function is an alias
+ * of KebabCase, this test is a duplicate of TestKebabCase.
+ */
+func TestSlug(t *testing.T) {
+
+	var testCases = []struct {
+		name   string
+		input  string
+		output string
+	}{
+		{
+			"empty input",
+			"",
+			"",
+		},
+		{
+			"test a single word",
+			"happy",
+			"happy",
+		},
+		{
+			"test two words",
+			"happy birthday",
+			"happy-birthday",
+		},
+		{
+			"a list of fruit",
+			"apple banana cherry",
+			"apple-banana-cherry",
+		},
+		{
+			"A normal sentence",
+			"This is a normal sentence.",
+			"this-is-a-normal-sentence",
+		},
+	}
+
+	// run each test case
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			if result := Slug(tc.input); result != tc.output {
+				t.Errorf("expected: %s, got: %s", tc.output, result)
+			}
+		})
+	}
+}
